@@ -1,21 +1,17 @@
-package net.atlassc.OpenGraphPaser;
+package net.atlassc.htmlmeta;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.atlassc.OpenGraphParser.OpenGraph;
-import net.atlassc.OpenGraphParser.Parser;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URLConnection;
 
-public class OpenGraphTest {
+public class MetaInfoTest {
     @Test
-    public void testFields() {
+    public void testMetaInfo() {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -28,10 +24,10 @@ public class OpenGraphTest {
         // Execute the request and retrieve the response.
         try (Response response = client.newCall(request).execute()) {
             // Deserialize HTTP response to concrete type.
-            OpenGraph openGraph = Parser.parseOpenGraph(response.body().string());
+            MetaInfo metaInfo=new MetaInfo(response.body().string());
 
             Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
-            String json = gson.toJson(openGraph);
+            String json = gson.toJson(metaInfo);
             System.out.println(json);
 
 
