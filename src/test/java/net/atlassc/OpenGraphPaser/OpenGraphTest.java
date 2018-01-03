@@ -10,6 +10,8 @@ import okhttp3.Response;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URLConnection;
 
 public class OpenGraphTest {
     @Test
@@ -28,9 +30,7 @@ public class OpenGraphTest {
             // Deserialize HTTP response to concrete type.
             OpenGraph openGraph = Parser.parseOpenGraph(response.body().string());
 
-            System.out.println(openGraph.getOgImageSecureUrl());
-
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
             String json = gson.toJson(openGraph);
             System.out.println(json);
 

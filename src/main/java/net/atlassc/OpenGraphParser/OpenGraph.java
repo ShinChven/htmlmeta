@@ -11,6 +11,9 @@ public class OpenGraph {
     private String ogImageUrl;
     private String ogImageSecureUrl;
     private String ogImageType;
+    private String ogSiteName;
+    private int ogImageWidth;
+    private int ogImageHeight;
 
     public void setOgTitle(String ogTitle) {
         this.ogTitle = ogTitle;
@@ -75,5 +78,26 @@ public class OpenGraph {
 
     public String getOgImageType() {
         return ogImageType;
+    }
+
+    public void setOgSiteName(String ogSiteName) {
+        this.ogSiteName = ogSiteName;
+    }
+
+
+    public void setOgImageHeight(int ogImageHeight) {
+        this.ogImageHeight = ogImageHeight;
+    }
+
+    public int getOgImageHeight() {
+        return ogImageHeight;
+    }
+
+    public void setOgImageWidth(int ogImageWidth) {
+        this.ogImageWidth = ogImageWidth;
+    }
+
+    public int getOgImageWidth() {
+        return ogImageWidth;
     }
 }

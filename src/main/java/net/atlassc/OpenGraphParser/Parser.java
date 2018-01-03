@@ -27,7 +27,10 @@ public class Parser {
         if (type != null) {
             openGraph.setOgType(type.attr("content"));
         }
-
+        Elements siteName = doc.select("meta[property=og:site_name]");
+        if (siteName != null) {
+            openGraph.setOgSiteName(siteName.attr("content"));
+        }
 
         Elements image = doc.select("meta[property=og:image]");
         if (image != null) {
@@ -35,16 +38,25 @@ public class Parser {
         }
         Elements imageUrl = doc.select("meta[property=og:image:url]");
         if (imageUrl != null) {
-            openGraph.setOgImageUrl(image.attr("content"));
+            openGraph.setOgImageUrl(imageUrl.attr("content"));
         }
         Elements imageSecureUrl = doc.select("meta[property=og:image:secure_url]");
         if (imageSecureUrl != null) {
-            openGraph.setOgImageSecureUrl(image.attr("content"));
+            openGraph.setOgImageSecureUrl(imageSecureUrl.attr("content"));
         }
         Elements imageType = doc.select("meta[property=og:image:type]");
         if (imageType != null) {
-            openGraph.setOgImageType(image.attr("content"));
+            openGraph.setOgImageType(imageType.attr("content"));
         }
+        Elements imageHeight = doc.select("meta[property=og:image:height]");
+        if (imageHeight != null) {
+            openGraph.setOgImageHeight(Integer.parseInt(imageHeight.attr("content")));
+        }
+        Elements imageWidth = doc.select("meta[property=og:image:width]");
+        if (imageWidth != null) {
+            openGraph.setOgImageWidth(Integer.parseInt(imageWidth.attr("content")));
+        }
+
 
 
         return openGraph;
